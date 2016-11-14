@@ -902,7 +902,13 @@ class Slide extends AbstractPart
 
                     // t
                     $objWriter->startElement('a:t');
-                    $objWriter->writeCData(String::controlCharacterPHP2OOXML($element->getText()));
+
+                    $text_element = $element->getText();
+
+                    if (! empty($text_element)) {
+                        $objWriter->writeCData(String::controlCharacterPHP2OOXML($element->getText() ));
+                    }
+
                     $objWriter->endElement();
 
                     $objWriter->endElement();
